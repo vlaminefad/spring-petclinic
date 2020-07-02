@@ -1,12 +1,10 @@
 FROM maven:3.6.3-jdk-8 AS build-env
 WORKDIR /app
 
-# Copy pom and get dependencies as seperate layers
 COPY pom.xml ./
 RUN mvn dependency:go-offline
 RUN mvn spring-javaformat:help
 
-# Copy the app code and package
 COPY . ./
 RUN mvn spring-javaformat:apply
 RUN mvn package -DfinalName=petclinic
