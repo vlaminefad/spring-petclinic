@@ -39,7 +39,7 @@ pipeline {
         }
         stage('deploy') {
             steps {                                
-                octopusPushBuildInformation ommentParser: 'GitHub', overwriteMode: 'FailIfExists', packageId: 'mcasperson/petclinic', packageVersion: "1.0.${BUILD_NUMBER}", serverId: "${ServerId}", spaceId: "${SpaceId}", toolId: 'Default', gitUrl: "${GIT_URL}", gitCommit: "${GIT_COMMIT}"
+                octopusPushBuildInformation commentParser: 'GitHub', overwriteMode: 'FailIfExists', packageId: 'mcasperson/petclinic', packageVersion: "1.0.${BUILD_NUMBER}", serverId: "${ServerId}", spaceId: "${SpaceId}", toolId: 'Default', gitUrl: "${GIT_URL}", gitCommit: "${GIT_COMMIT}"
                 octopusCreateRelease deployThisRelease: false, environment: "${EnvironmentName}", project: "${ProjectName}", releaseVersion: "1.0.${BUILD_NUMBER}", serverId: "${ServerId}", spaceId: "${SpaceId}", toolId: 'Default'
                 octopusDeployRelease cancelOnTimeout: false, environment: "${EnvironmentName}", project: "${ProjectName}", releaseVersion: "1.0.${BUILD_NUMBER}", serverId: "${ServerId}", spaceId: "${SpaceId}", toolId: 'Default', waitForDeployment: true
             }
