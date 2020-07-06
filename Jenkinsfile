@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage ('Add tools') {
             steps {
-                sh "echo \"OctoCLI: ${tool('OctoCLI')}\""
+                tool('OctoCLI')
             }
         }
         stage('Building our image') {
