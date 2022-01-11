@@ -6,13 +6,14 @@ pipeline {
                 script {
                     def dockerHome = tool 'docker'
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    sh " service start docker"
                 }
             }
         }
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = imageBuild("safiaeb/petclinic:$BUILD_NUMBER")
+                    dockerImage = docker.build "safiaeb/petclinic:$BUILD_NUMBER"
                 }
             }
         }
