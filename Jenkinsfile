@@ -13,7 +13,7 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build "safiaeb/petclinic:$BUILD_NUMBER"
+                    dockerImage = imageBuild("safiaeb/petclinic:$BUILD_NUMBER")
                 }
             }
         }
