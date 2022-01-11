@@ -5,7 +5,8 @@ pipeline {
             steps {
                 script {
                     def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    env.PATH = "${dockerHome}/bin:${env.PATH}
+                    service docker start
                 }
             }
         }
