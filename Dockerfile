@@ -7,11 +7,12 @@ RUN mvn spring-javaformat:help
 
 COPY . ./
 RUN mvn spring-javaformat:apply
-RUN mvn package -DfinalName=petclinic
+RUN mvn package 
 
 FROM openjdk:8-jre-alpine
 EXPOSE 8080
 WORKDIR /app
 
-COPY --from=build-env /app/target/petclinic.jar ./petclinic.jar
+COPY --from=build-env /app/target/* .jar ./petclinic.jar
 CMD ["/usr/bin/java", "-jar", "/app/petclinic.jar"]
+
