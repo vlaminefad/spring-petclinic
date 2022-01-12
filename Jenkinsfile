@@ -1,15 +1,8 @@
 pipeline {
-    agent any
+    agent {
+        label 'docker'
+    }
     stages {
-        stage('Initialize'){
-            steps {
-                script {
-                    def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    sh " service --status-all "
-                }
-            }
-        }
         stage('Building our image') {
             steps {
                 script {
