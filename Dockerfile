@@ -13,6 +13,6 @@ FROM openjdk:8-jre-alpine
 EXPOSE 8080
 WORKDIR /app
 
-COPY --from=build-env /app/target/* .jar ./petclinic.jar
+COPY --from=build-env /app/target/*.jar ./petclinic.jar
 CMD ["/usr/bin/java", "-jar", "/app/petclinic.jar"]
 
